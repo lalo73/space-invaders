@@ -17,8 +17,7 @@ public class SpaceGame extends Game{
 
     @Override
     protected void setUpScenes() {
-        String width = getConfig("screenWidth");
-        String height = getConfig("screenHeight");
+        
     }
 
     @Override
