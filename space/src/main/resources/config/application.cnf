@@ -1,5 +1,4 @@
 #Comments describing the file
 #more comments
-dbUser=username
-dbPassword=password
-dbUrl=jdbc\:mysql\://servername/databasename
+screenWidth=800
+screenHeight=600

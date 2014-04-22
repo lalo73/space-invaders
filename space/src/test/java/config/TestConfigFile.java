@@ -1,8 +1,7 @@
-import config.Config;
+package config;
+
 import org.junit.Assert;
 import org.junit.Test;
-
-import java.util.Properties;
 
 public class TestConfigFile {
 
