@@ -6,7 +6,7 @@ import config.Config;
 
 import java.awt.*;
 
-public class SpaceGame extends Game{
+public class SpaceGame extends Game {
     Config applicationConfig;
 
 
@@ -17,7 +17,7 @@ public class SpaceGame extends Game{
 
     @Override
     protected void setUpScenes() {
-        
+
     }
 
     @Override
@@ -29,14 +29,14 @@ public class SpaceGame extends Game{
 
     @Override
     public String getTitle() {
-        return null;
+        return getConfig("gameTitle");
     }
 
-    public Config getConfigurations(){
+    public Config getConfigurations() {
         return this.applicationConfig;
     }
 
-    public String  getConfig(String key){
+    public String getConfig(String key) {
         return this.getConfigurations().fetch(key);
     }
 }
