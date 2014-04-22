@@ -3,16 +3,23 @@ package space;
 
 import com.uqbar.vainilla.Game;
 import config.Config;
+import resources.Resource;
 
 import java.awt.*;
+import java.util.HashMap;
+
 
 public class SpaceGame extends Game {
     Config applicationConfig;
+    HashMap<String, Resource> resources;
 
 
     @Override
     protected void initializeResources() {
         this.applicationConfig = new Config("application.cnf");
+        this.resources = new HashMap<String, Resource>();
+        resources.put("background", Resource.fromImage(getConfig("backgroundFile")));
+
     }
 
     @Override
@@ -38,5 +45,9 @@ public class SpaceGame extends Game {
 
     public String getConfig(String key) {
         return this.getConfigurations().fetch(key);
+    }
+
+    public Resource getResource(String resourceName) {
+        return this.resources.get(resourceName);
     }
 }
