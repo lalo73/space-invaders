@@ -10,6 +10,6 @@ public class InvaderMaker extends ComponentMaker<Invader> {
 
     @Override
     public Invader create() {
-        return new Invader(getGame().getResource("invader1"), 0, 0, 1, 0, 0);
+        return new Invader(0, 0, 1, 0, 0);
     }
 }

@@ -15,6 +15,10 @@ public class Ship extends BasicMovingSpaceComponent {
         super(appearance, x, y, xV, yV, speed);
     }
 
+    public Ship(int x, int y, int xV, int yV, int speed) {
+        super(x,y, xV, yV, speed);
+    }
+
     public void init(){
         this.setLifePoints(1);
         this.setShotPower(1);

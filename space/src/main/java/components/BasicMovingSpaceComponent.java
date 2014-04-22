@@ -16,6 +16,10 @@ public class BasicMovingSpaceComponent extends MovingGameComponent<SpaceScene> {
         setInitZ();
     }
 
+    public BasicMovingSpaceComponent(int x, int y, int xV, int yV, int speed) {
+        super(x, y, xV, yV, speed);
+    }
+
     private void setInitZ(){
         setZ(2);
     }
