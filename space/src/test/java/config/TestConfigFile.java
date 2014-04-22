@@ -7,12 +7,12 @@ public class TestConfigFile {
 
     @Test
     public void getConfigurations(){
-        new Config("application.cnf");
+        new Config("application.xml");
     }
 
     @Test
     public void getSomeConfiguration(){
-        Config c = new Config("application.cnf");
+        Config c = new Config("application.xml");
         String projectName = c.fetch("projectName");
         Assert.assertEquals(projectName,"SpaceInvaders" );
     }

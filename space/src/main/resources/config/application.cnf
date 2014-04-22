@@ -1,6 +1,0 @@
-#Comments describing the file
-#more comments
-screenWidth=800
-screenHeight=600
-gameTitle="Space invaders"
-backgroundFile=space.jpg

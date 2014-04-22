@@ -22,7 +22,7 @@ public class Config{
         try {
             InputStream configFileStream = configFile.openStream();
             Properties p = new Properties();
-            p.load(configFileStream);
+            p.loadFromXML(configFileStream);
             configFileStream.close();
             return p;
         } catch (IOException e) {
