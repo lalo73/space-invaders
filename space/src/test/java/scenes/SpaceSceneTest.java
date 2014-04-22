@@ -21,7 +21,7 @@ public class SpaceSceneTest {
 
     @Test
     public void spaceSceneHasInvaderList() {
-        Assert.assertEquals(scene.getInvaderList(), new ArrayList<Ship>());
+        Assert.assertNotNull(scene.getInvaderList());
     }
 
     @Test
