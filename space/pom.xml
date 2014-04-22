@@ -48,7 +48,7 @@
 			jarFile -->
 		<assemblyDescriptor>jar-with-dependencies</assemblyDescriptor>
 	</properties>
-	<name>MyGame</name>
+	<name>SpaceGame</name>
 	<url>.</url>
 	<description>MyGame Powered By Uqbar-Vainilla</description>
 	<build>
