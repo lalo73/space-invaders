@@ -3,3 +3,4 @@
 projectName=SpaceInvaders
 screenWidth=800
 screenHeight=600
+backgroundFile=space.jpg
