@@ -14,4 +14,8 @@ public class InvadersPool extends Pool<Invader>{
     protected Invader create() {
         return getComponentMaker().create();
     }
+
+    public InvaderMaker getComponentMaker(){
+        return (InvaderMaker) super.getComponentMaker();
+    }
 }

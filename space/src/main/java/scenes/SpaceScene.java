@@ -5,6 +5,8 @@ import com.uqbar.vainilla.GameScene;
 import components.BasicSpaceComponent;
 import components.Ship;
 import components.invaders.Invader;
+import pool.InvadersPool;
+import pool.makers.InvaderMaker;
 import resources.Resource;
 import space.SpaceGame;
 
@@ -16,6 +18,7 @@ public abstract class SpaceScene extends GameScene {
     List<Ship> shipList;
     List<Ship> invaderList;
     GameComponent<SpaceScene> background;
+    InvadersPool invadersPool;
 
     public SpaceScene() {
         super();
@@ -31,6 +34,7 @@ public abstract class SpaceScene extends GameScene {
     public void onSetAsCurrent() {
         super.onSetAsCurrent();
         addBackground();
+        setInvadersPool(new InvadersPool(getGame()));
         addInvaders();
     }
 
@@ -60,14 +64,24 @@ public abstract class SpaceScene extends GameScene {
         return (SpaceGame) super.getGame();
     }
 
-    public GameComponent<SpaceScene> getBackground(){
+    public GameComponent<SpaceScene> getBackground() {
         return this.background;
     }
 
-    public void addInvader(Invader invader){
+    public void addInvader(Invader invader) {
         this.getInvaderList().add(invader);
         this.addComponent(invader);
     }
 
+    public InvadersPool getInvadersPool() {
+        return invadersPool;
+    }
+
+    public void setInvadersPool(InvadersPool invadersPool) {
+        this.invadersPool = invadersPool;
+    }
+
     public abstract void addInvaders();
+
+
 }
