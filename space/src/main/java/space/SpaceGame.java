@@ -21,7 +21,6 @@ public class SpaceGame extends Game {
         this.applicationConfig = new Config("application.cnf");
         this.resources = new HashMap<String, Resource>();
         resources.put("background", Resource.fromImage(getConfig("backgroundFile")));
-
     }
 
     @Override

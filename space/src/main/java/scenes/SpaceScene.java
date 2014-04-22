@@ -2,6 +2,7 @@ package scenes;
 
 import com.uqbar.vainilla.GameComponent;
 import com.uqbar.vainilla.GameScene;
+import components.BasicSpaceComponent;
 import components.Ship;
 import resources.Resource;
 import space.SpaceGame;
@@ -49,7 +50,7 @@ public class SpaceScene extends GameScene {
 
     public void addBackground() {
         Resource resource = getGame().getResource("background");
-        this.background = new GameComponent<SpaceScene>(resource, 0, 0);
+        this.background = new BasicSpaceComponent(resource, 0, 0);
         addComponents(getBackground());
     }
 

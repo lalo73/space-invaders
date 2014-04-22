@@ -1,10 +1,6 @@
 package components;
 
-import com.uqbar.vainilla.MovingGameComponent;
-import scenes.SpaceScene;
-
-
-public class Ship extends MovingGameComponent<SpaceScene> {
+public class Ship extends BasicSpaceComponent {
     private int lifePoints;
     private int shotPower;
 
