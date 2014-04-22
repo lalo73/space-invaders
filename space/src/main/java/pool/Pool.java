@@ -1,14 +1,18 @@
 package pool;
 
 
+import pool.makers.ComponentMaker;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public abstract class Pool<Component> {
     List<Component> componentList;
+    ComponentMaker<Component> componentMaker;
 
-    public Pool() {
+    public Pool(ComponentMaker<Component> componentMaker) {
         setComponentList(new ArrayList<Component>());
+        this.componentMaker = componentMaker;
     }
 
     public Component get(){
@@ -34,5 +38,13 @@ public abstract class Pool<Component> {
 
     protected void setComponentList(List<Component> componentList) {
         this.componentList = componentList;
+    }
+
+    public ComponentMaker<Component> getComponentMaker() {
+        return componentMaker;
+    }
+
+    public void setComponentMaker(ComponentMaker<Component> componentMaker) {
+        this.componentMaker = componentMaker;
     }
 }
