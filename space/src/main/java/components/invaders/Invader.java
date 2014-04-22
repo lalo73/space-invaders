@@ -1,5 +1,6 @@
 package components.invaders;
 
+import com.uqbar.vainilla.DeltaState;
 import components.Ship;
 import resources.Resource;
 
@@ -11,5 +12,10 @@ public class Invader extends Ship {
 
     public Invader(int x, int y, int xV, int yV, int speed) {
         super(x, y, xV, yV, speed);
+    }
+
+    @Override
+    public void update(DeltaState deltaState){
+        super.update(deltaState);
     }
 }
