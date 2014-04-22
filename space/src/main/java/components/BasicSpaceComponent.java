@@ -9,4 +9,8 @@ public class BasicSpaceComponent extends GameComponent<SpaceScene> {
     public BasicSpaceComponent(Appearance appearance, double x, double y){
         super(appearance, x, y);
     }
+
+    public BasicSpaceComponent() {
+        super();
+    }
 }
