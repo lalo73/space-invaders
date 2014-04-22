@@ -25,13 +25,13 @@ public abstract class SpaceScene extends GameScene {
     private void init() {
         setInvaderList(new ArrayList<Ship>());
         setShipList(new ArrayList<Ship>());
-        addInvaders();
     }
 
     @Override
     public void onSetAsCurrent() {
         super.onSetAsCurrent();
         addBackground();
+        addInvaders();
     }
 
     public List<Ship> getShipList() {
