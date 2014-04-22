@@ -5,7 +5,7 @@ import com.uqbar.vainilla.DesktopGameLauncher;
 import com.uqbar.vainilla.Game;
 import config.Config;
 import resources.Resource;
-import scenes.SpaceScene;
+import scenes.levels.Level1;
 
 import java.awt.*;
 import java.util.HashMap;
@@ -25,7 +25,7 @@ public class SpaceGame extends Game {
 
     @Override
     protected void setUpScenes() {
-        this.setCurrentScene(new SpaceScene());
+        this.setCurrentScene(new Level1());
     }
 
     public static void main(String[] args) throws Exception {

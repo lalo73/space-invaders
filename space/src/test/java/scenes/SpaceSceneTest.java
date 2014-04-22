@@ -5,6 +5,7 @@ import components.Ship;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import scenes.levels.Level1;
 import space.SpaceGame;
 
 import java.util.ArrayList;
@@ -15,7 +16,7 @@ public class SpaceSceneTest {
 
     @Before
     public void setUp() {
-        this.scene = new SpaceScene();
+        this.scene = new Level1();
     }
 
     @Test

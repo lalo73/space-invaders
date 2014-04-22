@@ -4,6 +4,7 @@ import com.uqbar.vainilla.GameComponent;
 import com.uqbar.vainilla.GameScene;
 import components.BasicSpaceComponent;
 import components.Ship;
+import components.invaders.Invader;
 import resources.Resource;
 import space.SpaceGame;
 
@@ -11,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class SpaceScene extends GameScene {
+public abstract class SpaceScene extends GameScene {
     List<Ship> shipList;
     List<Ship> invaderList;
     GameComponent<SpaceScene> background;
@@ -24,6 +25,7 @@ public class SpaceScene extends GameScene {
     private void init() {
         setInvaderList(new ArrayList<Ship>());
         setShipList(new ArrayList<Ship>());
+        addInvaders();
     }
 
     @Override
@@ -62,5 +64,10 @@ public class SpaceScene extends GameScene {
         return this.background;
     }
 
+    public void addInvader(Invader invader){
+        this.getInvaderList().add(invader);
+        this.addComponent(invader);
+    }
 
+    public abstract void addInvaders();
 }
