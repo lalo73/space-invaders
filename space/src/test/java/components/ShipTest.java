@@ -22,7 +22,7 @@ public class ShipTest {
 
     @Test
     public void defaultShipHasOneShotPower(){
-        int lifePoint = ship.getLifePoints();
+        int lifePoint = ship.getShotPower();
         Assert.assertEquals(lifePoint, 1);
     }
 }
