@@ -5,10 +5,20 @@ import java.io.InputStream;
 import java.net.URL;
 import java.util.Properties;
 
-public class Config {
+public class Config{
 
-    public static Properties getConfigurations() {
-        URL configFile = Config.class.getResource("application.cnf");
+    private Properties properties;
+
+    public Config(String file){
+        properties = getConfigurations(file);
+    }
+
+    public String fetch(String key){
+        return (String) this.properties.get(key);
+    }
+
+    private static Properties getConfigurations(String file) {
+        URL configFile = Config.class.getResource(file);
         try {
             InputStream configFileStream = configFile.openStream();
             Properties p = new Properties();
@@ -16,7 +26,6 @@ public class Config {
             configFileStream.close();
             return p;
         } catch (IOException e) {
-
             throw new RuntimeException(e);
         }
 

@@ -8,13 +8,13 @@ public class TestConfigFile {
 
     @Test
     public void getConfigurations(){
-        Config.getConfigurations();
+        new Config("application.cnf");
     }
 
     @Test
     public void getSomeConfiguration(){
-        Properties p = Config.getConfigurations();
-        String projectName = (String) p.get("projectName");
+        Config c = new Config("application.cnf");
+        String projectName = c.fetch("projectName");
         Assert.assertEquals(projectName,"SpaceInvaders" );
     }
 }
