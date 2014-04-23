@@ -2,6 +2,8 @@ package scenes;
 
 import com.uqbar.vainilla.GameComponent;
 import com.uqbar.vainilla.GameScene;
+import com.uqbar.vainilla.colissions.CollisionDetector;
+import components.BasicMovingSpaceComponent;
 import components.BasicSpaceComponent;
 import components.Ship;
 import components.invaders.Invader;
@@ -53,6 +55,10 @@ public abstract class SpaceScene extends GameScene {
 
     public List<Ship> getInvaderList() {
         return invaderList;
+    }
+
+    public List<Ship> invaderList(){
+        return new ArrayList<Ship>(getInvaderList());
     }
 
     public void setInvaderList(List<Ship> invaderList) {
@@ -113,5 +119,17 @@ public abstract class SpaceScene extends GameScene {
 
     public void setShots(List<Shot> shots) {
         this.shots = shots;
+    }
+
+    public void verifyCollision(Shot shot) {
+        for (Ship ship : invaderList()) {
+            if (CollisionDetector.INSTANCE.collidesRectAgainstRect(shot.getRect(), ship.getRect())) {
+                shot.collide(ship);
+            }
+        }
+    }
+
+    public void removeComponent(GameComponent<?> component) {
+        super.removeComponent(component);
     }
 }

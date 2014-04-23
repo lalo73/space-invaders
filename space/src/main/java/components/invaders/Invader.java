@@ -28,4 +28,9 @@ public class Invader extends Ship {
         }
         return invaderMover;
     }
+
+    public void destroy(){
+        getScene().getInvaderList().remove(this);
+        super.destroy();
+    }
 }
