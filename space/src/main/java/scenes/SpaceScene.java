@@ -6,6 +6,7 @@ import components.BasicSpaceComponent;
 import components.Ship;
 import components.invaders.Invader;
 import components.player.PlayerShip;
+import components.shotting.Shot;
 import pool.InvadersPool;
 import pool.makers.InvaderMaker;
 import resources.Resource;
@@ -18,6 +19,7 @@ import java.util.List;
 public abstract class SpaceScene extends GameScene {
     List<Ship> shipList;
     List<Ship> invaderList;
+    List<Shot> shots;
     GameComponent<SpaceScene> background;
     InvadersPool invadersPool;
 
@@ -29,6 +31,7 @@ public abstract class SpaceScene extends GameScene {
     private void init() {
         setInvaderList(new ArrayList<Ship>());
         setShipList(new ArrayList<Ship>());
+        setShots(new ArrayList<Shot>());
     }
 
     @Override
@@ -92,5 +95,23 @@ public abstract class SpaceScene extends GameScene {
         addComponent(player);
     }
 
+    public void shot(PlayerShip ship) {
+        Resource resource = getGame().getResource("shot");
+        int y = (int) (ship.getY() - 1 - resource.getHeight());
+        int x = (int) (ship.getX() + (ship.getWidth() / 2) - (resource.getWidth() / 2));
+        addShot(new Shot(resource, x, y, 0, -1, 100));
+    }
 
+    public void addShot(Shot shot) {
+        getShots().add(shot);
+        addComponent(shot);
+    }
+
+    public List<Shot> getShots() {
+        return shots;
+    }
+
+    public void setShots(List<Shot> shots) {
+        this.shots = shots;
+    }
 }
