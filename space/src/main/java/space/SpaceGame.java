@@ -66,10 +66,10 @@ public class SpaceGame extends Game {
     }
 
     public void loadInvaderImages(){
-        addResource("invader1","invaders/invader1-small.png");
-        addResource("invader2","invaders/invader2-small.png");
-        addResource("invader3","invaders/invader3-small.png");
-        addResource("invader4","invaders/invader4-small.png");
-        addResource("invader5","invaders/invader5-small.png");
+        addResource("invader-yellow","invaders/invader1-small.png");
+        addResource("invader-orange","invaders/invader2-small.png");
+        addResource("invader-violet","invaders/invader3-small.png");
+        addResource("invader-blue","invaders/invader4-small.png");
+        addResource("invader-green","invaders/invader5-small.png");
     }
 }

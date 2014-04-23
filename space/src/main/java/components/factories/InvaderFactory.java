@@ -15,24 +15,24 @@ public class InvaderFactory {
     }
 
     public static Invader createYellow(SpaceGame game){
-        Resource resource = game.getResource("invader1");
+        Resource resource = game.getResource("invader-yellow");
         return new Invader(resource, 0, 0, 1, 0, 0);
     }
     public static Invader createOrange(SpaceGame game){
-        Resource resource = game.getResource("invader2");
+        Resource resource = game.getResource("invader-orange");
         return new Invader(resource, 0, 0, 1, 0, 0);
     }
     public static Invader createViolet(SpaceGame game){
-        Resource resource = game.getResource("invader3");
+        Resource resource = game.getResource("invader-violet");
         return new Invader(resource, 0, 0, 1, 0, 0);
     }
     public static Invader createBlue(SpaceGame game){
-        Resource resource = game.getResource("invader4");
+        Resource resource = game.getResource("invader-blue");
         return new Invader(resource, 0, 0, 1, 0, 0);
     }
 
     public static Invader createGreen(SpaceGame game){
-        Resource resource = game.getResource("invader5");
+        Resource resource = game.getResource("invader-green");
         return new Invader(resource, 0, 0, 1, 0, 0);
     }
 
