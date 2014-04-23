@@ -22,6 +22,7 @@ public class SpaceGame extends Game {
         this.resources = new HashMap<String, Resource>();
         loadBackground();
         loadInvaderImages();
+        loadPlayerImages();
     }
 
     @Override
@@ -71,5 +72,10 @@ public class SpaceGame extends Game {
         addResource("invader-violet","invaders/invader3-small.png");
         addResource("invader-blue","invaders/invader4-small.png");
         addResource("invader-green","invaders/invader5-small.png");
+    }
+
+    public void loadPlayerImages(){
+        addResource("player-ship", "players/ship1.png");
+        addResource("player-ship2", "players/ship2.png");
     }
 }
