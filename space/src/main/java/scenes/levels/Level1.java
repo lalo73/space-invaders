@@ -9,8 +9,14 @@ import scenes.SpaceScene;
 public class Level1 extends SpaceScene {
     @Override
     public void addInvaders() {
-        for(Invader invader : InvaderFactory.invadersRow(17, getGame(), 20, 20, 5, 10, "green"))
-            this.addInvader(invader);
+        String[] colors = {"blue", "green", "violet", "orange", "yellow"};
+        int initY = 20;
+        for(String color: colors){
+            for(Invader invader : InvaderFactory.invadersRow(17, getGame(), 20, initY, 5, 10, color))
+                this.addInvader(invader);
+            initY += this.getInvaderList().get(0).getHeight();
+        }
+
 
     }
 }
