@@ -23,6 +23,7 @@ public class SpaceGame extends Game {
         loadBackground();
         loadInvaderImages();
         loadPlayerImages();
+        loadShots();
     }
 
     @Override
@@ -77,5 +78,9 @@ public class SpaceGame extends Game {
     public void loadPlayerImages() {
         addResource("player-ship", "players/ship1.png");
         addResource("player-ship2", "players/ship2.png");
+    }
+
+    public void loadShots() {
+        addResource("shot", "shots/shot2.png");
     }
 }
