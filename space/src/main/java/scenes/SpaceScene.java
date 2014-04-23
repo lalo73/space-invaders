@@ -87,7 +87,7 @@ public abstract class SpaceScene extends GameScene {
 
     public abstract void addPlayers();
 
-    public void addPlayer(PlayerShip player){
+    public void addPlayer(PlayerShip player) {
         getShipList().add(player);
         addComponent(player);
     }

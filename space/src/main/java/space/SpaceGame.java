@@ -58,23 +58,23 @@ public class SpaceGame extends Game {
         return this.resources.get(resourceName);
     }
 
-    public void addResource(String key, String image){
+    public void addResource(String key, String image) {
         resources.put(key, Resource.fromImage(image));
     }
 
-    public void loadBackground(){
+    public void loadBackground() {
         addResource("background", getConfig("backgroundFile"));
     }
 
-    public void loadInvaderImages(){
-        addResource("invader-yellow","invaders/invader1-small.png");
-        addResource("invader-orange","invaders/invader2-small.png");
-        addResource("invader-violet","invaders/invader3-small.png");
-        addResource("invader-blue","invaders/invader4-small.png");
-        addResource("invader-green","invaders/invader5-small.png");
+    public void loadInvaderImages() {
+        addResource("invader-yellow", "invaders/invader1-small.png");
+        addResource("invader-orange", "invaders/invader2-small.png");
+        addResource("invader-violet", "invaders/invader3-small.png");
+        addResource("invader-blue", "invaders/invader4-small.png");
+        addResource("invader-green", "invaders/invader5-small.png");
     }
 
-    public void loadPlayerImages(){
+    public void loadPlayerImages() {
         addResource("player-ship", "players/ship1.png");
         addResource("player-ship2", "players/ship2.png");
     }

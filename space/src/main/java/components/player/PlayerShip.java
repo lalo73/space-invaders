@@ -27,7 +27,6 @@ public class PlayerShip extends Ship {
     }
 
     public void updateX(DeltaState deltaState) {
-        double speed = getSpeed();
         setSpeed(0);
         if (deltaState.isKeyBeingHold(Key.LEFT) && !deltaState.isKeyBeingHold(Key.RIGHT)) {
             getUVector().setX(-1);
