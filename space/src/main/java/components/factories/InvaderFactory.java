@@ -10,44 +10,47 @@ import java.util.List;
 
 public class InvaderFactory {
 
-    public static Invader create(){
+    public static Invader create() {
         return new Invader(0, 0, 1, 0, 0);
     }
 
-    public static Invader createYellow(SpaceGame game){
-        Resource resource = game.getResource("invader-yellow");
-        return new Invader(resource, 0, 0, 1, 0, 0);
+    public static Invader createYellow(SpaceGame game) {
+        return createByColor(game, "yellow");
     }
-    public static Invader createOrange(SpaceGame game){
-        Resource resource = game.getResource("invader-orange");
-        return new Invader(resource, 0, 0, 1, 0, 0);
+
+    public static Invader createOrange(SpaceGame game) {
+        return createByColor(game, "orange");
     }
-    public static Invader createViolet(SpaceGame game){
-        Resource resource = game.getResource("invader-violet");
-        return new Invader(resource, 0, 0, 1, 0, 0);
+
+    public static Invader createViolet(SpaceGame game) {
+        return createByColor(game, "violet");
     }
-    public static Invader createBlue(SpaceGame game){
-        Resource resource = game.getResource("invader-blue");
+
+    public static Invader createBlue(SpaceGame game) {
+        return createByColor(game, "blue");
+    }
+
+    public static Invader createGreen(SpaceGame game) {
+        return createByColor(game, "green");
+    }
+
+    public static Invader createByColor(SpaceGame spaceGame, String color) {
+        Resource resource = spaceGame.getResource(String.format("invader-%s", color));
         return new Invader(resource, 0, 0, 1, 0, 0);
     }
 
-    public static Invader createGreen(SpaceGame game){
-        Resource resource = game.getResource("invader-green");
-        return new Invader(resource, 0, 0, 1, 0, 0);
-    }
-
-    public static List<Invader> getInvaders(int number, SpaceGame game){
+    public static List<Invader> getInvaders(int number, SpaceGame game, String color) {
         List<Invader> invaders = new ArrayList<Invader>();
         for (int i = 0; i < number; i++) {
-            invaders.add(createGreen(game));
+            invaders.add(createByColor(game, color));
         }
         return invaders;
     }
 
-    public static List<Invader> invadersRow(int count, SpaceGame spaceGame, int initX, int initY, int separation, int speed){
+    public static List<Invader> invadersRow(int count, SpaceGame spaceGame, int initX, int initY, int separation, int speed, String color) {
         List<Invader> invaders = new ArrayList<Invader>();
         for (int i = 0; i < count; i++) {
-            Invader invader = createGreen(spaceGame);
+            Invader invader = createByColor(spaceGame, color);
             invader.setX(initX);
             invader.setY(initY);
             invader.getUVector().set(1, 0);
