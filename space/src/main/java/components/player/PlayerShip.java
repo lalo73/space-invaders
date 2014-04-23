@@ -24,6 +24,13 @@ public class PlayerShip extends Ship {
     public void update(DeltaState deltaState) {
         updateX(deltaState);
         super.update(deltaState);
+        if(deltaState.isKeyReleased(Key.SPACE)){
+            shot();
+        }
+    }
+
+    public void shot(){
+        getScene().shot(this);
     }
 
     public void updateX(DeltaState deltaState) {
