@@ -6,6 +6,8 @@ import resources.Resource;
 
 public class Invader extends Ship {
 
+    private InvaderMover invaderMover;
+
     public Invader(Resource resource, double x, double y, double xV, double yV, double speed) {
         super(resource, x, y, xV, yV, speed);
     }
@@ -16,6 +18,14 @@ public class Invader extends Ship {
 
     @Override
     public void update(DeltaState deltaState){
+        getInvaderMover().update(deltaState);
         super.update(deltaState);
+    }
+
+    protected InvaderMover getInvaderMover(){
+        if(this.invaderMover == null){
+            this.invaderMover = new StandardMove(this);
+        }
+        return invaderMover;
     }
 }
