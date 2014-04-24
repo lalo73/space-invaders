@@ -76,11 +76,11 @@ public class SpaceGame extends Game {
     }
 
     public void loadPlayerImages() {
-        addResource("player-ship", "players/ship1.png");
-        addResource("player-ship2", "players/ship2.png");
+        addResource("player-ship1", getConfig("playerShip1"));
+        addResource("player-ship2", getConfig("playerShip2"));
     }
 
     public void loadShots() {
-        addResource("shot", "shots/shot2.png");
+        addResource("shot", getConfig("shotImage"));
     }
 }

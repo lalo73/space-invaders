@@ -24,7 +24,7 @@ public class Level1 extends SpaceScene {
 
     @Override
     public void addPlayers() {
-        Resource resource = getGame().getResource("player-ship2");
+        Resource resource = getGame().getResource("player-ship1");
         addPlayer(new PlayerShip(resource, getGame().getDisplayWidth() / 2, (int) (getGame().getDisplayHeight() - 20 - resource.getHeight()), 1, 0, 70));
     }
 }

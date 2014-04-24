@@ -5,4 +5,7 @@
     <entry key="screenHeight">600</entry>
     <entry key="gameTitle">Space invaders</entry>
     <entry key="backgroundFile">space.jpg</entry>
+    <entry key="shotImage">shots/shot2.png</entry>
+    <entry key="playerShip1">players/ship1.png</entry>
+    <entry key="playerShip2">players/ship2.png</entry>
 </properties>
