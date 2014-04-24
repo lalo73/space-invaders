@@ -1,16 +1,17 @@
 package components;
 
 import collisionGroups.CollisionGroup;
+import com.uqbar.vainilla.DeltaState;
 import com.uqbar.vainilla.GameComponent;
 import com.uqbar.vainilla.appearances.Appearance;
 import scenes.SpaceScene;
 
-public class Ship extends BasicMovingSpaceComponent implements Collidable{
+public class Ship extends BasicMovingSpaceComponent implements Collidable, Shooter {
     private int lifePoints;
     private int shotPower;
     private CollisionGroup collisionGroup;
 
-    public Ship(){
+    public Ship() {
         super();
         init();
     }
@@ -20,10 +21,10 @@ public class Ship extends BasicMovingSpaceComponent implements Collidable{
     }
 
     public Ship(int x, int y, int xV, int yV, int speed) {
-        super(x,y, xV, yV, speed);
+        super(x, y, xV, yV, speed);
     }
 
-    public void init(){
+    public void init() {
         this.setLifePoints(1);
         this.setShotPower(1);
     }
@@ -47,7 +48,7 @@ public class Ship extends BasicMovingSpaceComponent implements Collidable{
     @Override
     public void collidedBy(Collidable collidable) {
         setLifePoints(getLifePoints() - 1);
-        if(getLifePoints() <= 0){
+        if (getLifePoints() <= 0) {
             destroy();
         }
     }
@@ -69,5 +70,20 @@ public class Ship extends BasicMovingSpaceComponent implements Collidable{
 
     public void setCollisionGroup(CollisionGroup collisionGroup) {
         this.collisionGroup = collisionGroup;
+    }
+
+    @Override
+    public boolean canShot(DeltaState deltaState) {
+        return false;
+    }
+
+    @Override
+    public void shot() {
+        getScene().shot(this);
+    }
+        @Override
+    public void tryShot(DeltaState deltaState) {
+        if (canShot(deltaState))
+            shot();
     }
 }

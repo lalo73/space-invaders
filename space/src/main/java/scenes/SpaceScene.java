@@ -5,6 +5,7 @@ import com.uqbar.vainilla.GameScene;
 import com.uqbar.vainilla.colissions.CollisionDetector;
 import components.BasicSpaceComponent;
 import components.Collidable;
+import components.Ship;
 import components.invaders.Invader;
 import components.player.PlayerShip;
 import components.shotting.Shot;
@@ -84,15 +85,6 @@ public abstract class SpaceScene extends GameScene {
         addComponent(player);
     }
 
-    public void shot(PlayerShip ship) {
-        Resource resource = getGame().getResource("playerShot");
-        int y = (int) (ship.getY() - 10 - resource.getHeight());
-        int x = (int) (ship.getX() + (ship.getWidth() / 2) - (resource.getWidth() / 2));
-        Shot shot = new Shot(resource, x, y, 0, -1, 100);
-        shot.setCollisionGroup(ship.getCollisionGroup());
-        addShot(shot);
-    }
-
     public void addShot(Shot shot) {
         getCollidables().add(shot);
         addComponent(shot);
@@ -113,5 +105,14 @@ public abstract class SpaceScene extends GameScene {
 
     public void setCollidables(ArrayList<Collidable> collidables) {
         this.collidables = collidables;
+    }
+
+    public void shot(Ship ship) {
+        Resource resource = getGame().getResource("playerShot");
+        int y = (int) (ship.getY() - 10 - resource.getHeight());
+        int x = (int) (ship.getX() + (ship.getWidth() / 2) - (resource.getWidth() / 2));
+        Shot shot = new Shot(resource, x, y, 0, -1, 100);
+        shot.setCollisionGroup(ship.getCollisionGroup());
+        addShot(shot);
     }
 }
