@@ -29,7 +29,7 @@ public abstract class SpaceScene extends GameScene {
         init();
     }
 
-    private void init() {
+    public void init() {
         setCollidables(new ArrayList<Collidable>());
     }
 
@@ -91,7 +91,9 @@ public abstract class SpaceScene extends GameScene {
         Resource resource = getGame().getResource("shot");
         int y = (int) (ship.getY() - 10 - resource.getHeight());
         int x = (int) (ship.getX() + (ship.getWidth() / 2) - (resource.getWidth() / 2));
-        addShot(new Shot(resource, x, y, 0, -1, 100));
+        Shot shot = new Shot(resource, x, y, 0, -1, 100);
+        shot.setCollisionGroup(ship.getCollisionGroup());
+        addShot(shot);
     }
 
     public void addShot(Shot shot) {
