@@ -1,5 +1,6 @@
 package components;
 
+import collitionGroups.CollisionGroup;
 import com.uqbar.vainilla.GameComponent;
 import scenes.SpaceScene;
 
@@ -11,4 +12,8 @@ public interface Collidable {
     public void collidedBy(Collidable collidable);
 
     public GameComponent<SpaceScene> asComponent();
+
+    public boolean canCollition(Collidable collidable);
+
+    public CollisionGroup getCollisionGroup();
 }

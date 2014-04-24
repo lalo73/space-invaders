@@ -102,7 +102,7 @@ public abstract class SpaceScene extends GameScene {
     public void verifyCollision(Shot shot) {
         for (Collidable collidable: iterCollidables()) {
 
-            if (collidable != shot && CollisionDetector.INSTANCE.collidesRectAgainstRect(shot.getRect(), collidable.asComponent().getRect())) {
+            if (shot.canCollition(collidable) && CollisionDetector.INSTANCE.collidesRectAgainstRect(shot.getRect(), collidable.asComponent().getRect())) {
                 shot.collide(collidable);
             }
         }

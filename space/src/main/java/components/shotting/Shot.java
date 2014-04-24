@@ -1,6 +1,7 @@
 package components.shotting;
 
 
+import collitionGroups.CollisionGroup;
 import com.uqbar.vainilla.DeltaState;
 import com.uqbar.vainilla.GameComponent;
 import com.uqbar.vainilla.appearances.Appearance;
@@ -9,7 +10,8 @@ import components.BasicMovingSpaceComponent;
 import components.Collidable;
 import scenes.SpaceScene;
 
-public class Shot extends BasicMovingSpaceComponent implements Collidable{
+public class Shot extends BasicMovingSpaceComponent implements Collidable {
+    private CollisionGroup collisionGroup;
 
     public Shot(Appearance appearance, int x, int y, int xV, int yV, int speed) {
         super(appearance, x, y, xV, yV, speed);
@@ -41,7 +43,7 @@ public class Shot extends BasicMovingSpaceComponent implements Collidable{
     }
 
     @Override
-    public void destroy(){
+    public void destroy() {
         super.destroy();
         getScene().getCollidables().remove(this);
     }
@@ -49,5 +51,19 @@ public class Shot extends BasicMovingSpaceComponent implements Collidable{
     @Override
     public GameComponent<SpaceScene> asComponent() {
         return this;
+    }
+
+    @Override
+    public boolean canCollition(Collidable collidable) {
+        return collidable != this && collidable.getCollisionGroup() == null || getCollisionGroup() != collidable.getCollisionGroup();
+    }
+
+    @Override
+    public CollisionGroup getCollisionGroup() {
+        return this.collisionGroup;
+    }
+
+    public void setCollisionGroup(CollisionGroup collisionGroup) {
+        this.collisionGroup = collisionGroup;
     }
 }

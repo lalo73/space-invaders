@@ -1,5 +1,6 @@
 package components;
 
+import collitionGroups.CollisionGroup;
 import com.uqbar.vainilla.GameComponent;
 import com.uqbar.vainilla.appearances.Appearance;
 import components.shotting.Shot;
@@ -8,6 +9,7 @@ import scenes.SpaceScene;
 public class Ship extends BasicMovingSpaceComponent implements Collidable{
     private int lifePoints;
     private int shotPower;
+    private CollisionGroup collisionGroup;
 
     public Ship(){
         super();
@@ -54,5 +56,19 @@ public class Ship extends BasicMovingSpaceComponent implements Collidable{
     @Override
     public GameComponent<SpaceScene> asComponent() {
         return this;
+    }
+
+    @Override
+    public boolean canCollition(Collidable collidable) {
+        return getCollisionGroup() != collidable.getCollisionGroup();
+    }
+
+    @Override
+    public CollisionGroup getCollisionGroup() {
+        return this.collisionGroup;
+    }
+
+    public void setCollisionGroup(CollisionGroup collisionGroup) {
+        this.collisionGroup = collisionGroup;
     }
 }
