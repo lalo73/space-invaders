@@ -3,7 +3,7 @@ package components;
 import com.uqbar.vainilla.appearances.Appearance;
 import components.shotting.Shot;
 
-public class Ship extends BasicMovingSpaceComponent {
+public class Ship extends BasicMovingSpaceComponent implements Collidable{
     private int lifePoints;
     private int shotPower;
 
@@ -41,7 +41,8 @@ public class Ship extends BasicMovingSpaceComponent {
         this.shotPower = shotPower;
     }
 
-    public void collidedBy(Shot shot){
+    @Override
+    public void collidedBy(Collidable collidable) {
         setLifePoints(getLifePoints() - 1);
         if(getLifePoints() <= 0){
             destroy();

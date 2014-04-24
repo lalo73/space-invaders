@@ -4,6 +4,7 @@ package components.player;
 import com.uqbar.vainilla.DeltaState;
 import com.uqbar.vainilla.appearances.Appearance;
 import com.uqbar.vainilla.events.constants.Key;
+import components.Collidable;
 import components.Ship;
 
 public class PlayerShip extends Ship {
