@@ -3,15 +3,12 @@ package scenes;
 import com.uqbar.vainilla.GameComponent;
 import com.uqbar.vainilla.GameScene;
 import com.uqbar.vainilla.colissions.CollisionDetector;
-import components.BasicMovingSpaceComponent;
 import components.BasicSpaceComponent;
 import components.Collidable;
-import components.Ship;
 import components.invaders.Invader;
 import components.player.PlayerShip;
 import components.shotting.Shot;
 import pool.InvadersPool;
-import pool.makers.InvaderMaker;
 import resources.Resource;
 import space.SpaceGame;
 
@@ -104,7 +101,7 @@ public abstract class SpaceScene extends GameScene {
     public void verifyCollision(Shot shot) {
         for (Collidable collidable: iterCollidables()) {
 
-            if (shot.canCollition(collidable) && CollisionDetector.INSTANCE.collidesRectAgainstRect(shot.getRect(), collidable.asComponent().getRect())) {
+            if (shot.canCollision(collidable) && CollisionDetector.INSTANCE.collidesRectAgainstRect(shot.getRect(), collidable.asComponent().getRect())) {
                 shot.collide(collidable);
             }
         }

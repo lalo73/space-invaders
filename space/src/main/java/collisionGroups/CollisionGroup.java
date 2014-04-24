@@ -1,4 +1,4 @@
-package collitionGroups;
+package collisionGroups;
 
 
 public class CollisionGroup {

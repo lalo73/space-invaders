@@ -1,9 +1,8 @@
 package components;
 
-import collitionGroups.CollisionGroup;
+import collisionGroups.CollisionGroup;
 import com.uqbar.vainilla.GameComponent;
 import com.uqbar.vainilla.appearances.Appearance;
-import components.shotting.Shot;
 import scenes.SpaceScene;
 
 public class Ship extends BasicMovingSpaceComponent implements Collidable{
@@ -59,7 +58,7 @@ public class Ship extends BasicMovingSpaceComponent implements Collidable{
     }
 
     @Override
-    public boolean canCollition(Collidable collidable) {
+    public boolean canCollision(Collidable collidable) {
         return getCollisionGroup() != collidable.getCollisionGroup();
     }
 

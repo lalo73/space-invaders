@@ -1,7 +1,7 @@
 package components.shotting;
 
 
-import collitionGroups.CollisionGroup;
+import collisionGroups.CollisionGroup;
 import com.uqbar.vainilla.DeltaState;
 import com.uqbar.vainilla.GameComponent;
 import com.uqbar.vainilla.appearances.Appearance;
@@ -54,7 +54,7 @@ public class Shot extends BasicMovingSpaceComponent implements Collidable {
     }
 
     @Override
-    public boolean canCollition(Collidable collidable) {
+    public boolean canCollision(Collidable collidable) {
         return collidable != this && collidable.getCollisionGroup() == null || getCollisionGroup() != collidable.getCollisionGroup();
     }
 

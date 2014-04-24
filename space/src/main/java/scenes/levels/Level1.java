@@ -1,7 +1,7 @@
 package scenes.levels;
 
 
-import collitionGroups.CollisionGroup;
+import collisionGroups.CollisionGroup;
 import components.factories.InvaderFactory;
 import components.invaders.Invader;
 import components.player.PlayerShip;
