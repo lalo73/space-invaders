@@ -55,7 +55,7 @@ public class Shot extends BasicMovingSpaceComponent implements Collidable {
 
     @Override
     public boolean canCollision(Collidable collidable) {
-        return collidable != this && collidable.getCollisionGroup() == null || getCollisionGroup() != collidable.getCollisionGroup();
+        return collidable != this && (collidable.getCollisionGroup() == null || getCollisionGroup() != collidable.getCollisionGroup());
     }
 
     @Override
