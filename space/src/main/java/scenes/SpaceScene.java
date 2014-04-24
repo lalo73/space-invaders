@@ -6,6 +6,7 @@ import com.uqbar.vainilla.colissions.CollisionDetector;
 import components.BasicSpaceComponent;
 import components.Collidable;
 import components.Ship;
+import components.fx.NyanCatManager;
 import components.invaders.Invader;
 import components.player.PlayerShip;
 import components.shotting.Shot;
@@ -39,6 +40,11 @@ public abstract class SpaceScene extends GameScene {
         setInvadersPool(new InvadersPool(getGame()));
         addInvaders();
         addPlayers();
+        addFX();
+    }
+
+    public void addFX() {
+        addComponent(new NyanCatManager());
     }
 
     public List<Collidable> iterCollidables(){
