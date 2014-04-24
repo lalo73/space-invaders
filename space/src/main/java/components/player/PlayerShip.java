@@ -39,7 +39,7 @@ public class PlayerShip extends Ship {
     @Override
     public Shot createShot() {
         Resource resource = getGame().getResource("playerShot");
-        int y = (int) (getY() - 10 - resource.getHeight());
+        int y = (int) (getY() - (resource.getHeight() / 2));
         int x = (int) (getX() + (getWidth() / 2) - (resource.getWidth() / 2));
         return new Shot(resource, x, y, 0, -1, 100);
     }
