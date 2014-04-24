@@ -24,6 +24,7 @@ public class SpaceGame extends Game {
         loadInvaderImages();
         loadPlayerImages();
         loadShots();
+        loadFX();
     }
 
     @Override
@@ -83,5 +84,9 @@ public class SpaceGame extends Game {
     public void loadShots() {
         addResource("playerShot", getConfig("playersShotImage"));
         addResource("invaderShot", getConfig("invadersShotImage"));
+    }
+
+    public void loadFX() {
+        addResource("nyanCat", getConfig("nyanCat"));
     }
 }
