@@ -2,11 +2,12 @@ package components.shotting;
 
 
 import com.uqbar.vainilla.DeltaState;
+import com.uqbar.vainilla.GameComponent;
 import com.uqbar.vainilla.appearances.Appearance;
 import com.uqbar.vainilla.colissions.CollisionDetector;
 import components.BasicMovingSpaceComponent;
 import components.Collidable;
-import components.Ship;
+import scenes.SpaceScene;
 
 public class Shot extends BasicMovingSpaceComponent implements Collidable{
 
@@ -29,13 +30,24 @@ public class Shot extends BasicMovingSpaceComponent implements Collidable{
     }
 
 
-    public void collide(Ship ship) {
-        ship.collidedBy(this);
+    public void collide(Collidable collidable) {
+        collidable.collidedBy(this);
         destroy();
     }
 
     @Override
     public void collidedBy(Collidable collidable) {
         destroy();
+    }
+
+    @Override
+    public void destroy(){
+        super.destroy();
+        getScene().getCollidables().remove(this);
+    }
+
+    @Override
+    public GameComponent<SpaceScene> asComponent() {
+        return this;
     }
 }

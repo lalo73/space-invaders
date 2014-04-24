@@ -20,16 +20,6 @@ public class SpaceSceneTest {
     }
 
     @Test
-    public void spaceSceneHasInvaderList() {
-        Assert.assertEquals(scene.getInvaderList(), new ArrayList<Ship>());
-    }
-
-    @Test
-    public void spaceSceneHasShipList() {
-        Assert.assertEquals(scene.getShipList(), new ArrayList<Ship>());
-    }
-
-    @Test
     public void hasNoBackgroundOnInit() {
         Assert.assertNull(this.scene.getBackground());
     }

@@ -13,10 +13,13 @@ public class Level1 extends SpaceScene {
     public void addInvaders() {
         String[] colors = {"blue", "green", "violet", "orange", "yellow"};
         int initY = 20;
+        int height = 0;
         for (String color : colors) {
-            for (Invader invader : InvaderFactory.invadersRow(17, getGame(), 20, initY, 5, 30, color))
-                this.addInvader(invader);
-            initY += this.getInvaderList().get(0).getHeight();
+            for (Invader invader : InvaderFactory.invadersRow(17, getGame(), 20, initY, 5, 30, color)) {
+                addInvader(invader);
+                height = (int) invader.getHeight();
+            }
+            initY += height;
         }
 
 

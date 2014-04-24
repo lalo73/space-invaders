@@ -1,7 +1,9 @@
 package components;
 
+import com.uqbar.vainilla.GameComponent;
 import com.uqbar.vainilla.appearances.Appearance;
 import components.shotting.Shot;
+import scenes.SpaceScene;
 
 public class Ship extends BasicMovingSpaceComponent implements Collidable{
     private int lifePoints;
@@ -47,5 +49,10 @@ public class Ship extends BasicMovingSpaceComponent implements Collidable{
         if(getLifePoints() <= 0){
             destroy();
         }
+    }
+
+    @Override
+    public GameComponent<SpaceScene> asComponent() {
+        return this;
     }
 }

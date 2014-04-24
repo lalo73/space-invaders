@@ -30,7 +30,7 @@ public class Invader extends Ship {
     }
 
     public void destroy(){
-        getScene().getInvaderList().remove(this);
+        getScene().getCollidables().remove(this);
         super.destroy();
     }
 }

@@ -5,6 +5,7 @@ import com.uqbar.vainilla.GameScene;
 import com.uqbar.vainilla.colissions.CollisionDetector;
 import components.BasicMovingSpaceComponent;
 import components.BasicSpaceComponent;
+import components.Collidable;
 import components.Ship;
 import components.invaders.Invader;
 import components.player.PlayerShip;
@@ -19,9 +20,7 @@ import java.util.List;
 
 
 public abstract class SpaceScene extends GameScene {
-    List<Ship> shipList;
-    List<Ship> invaderList;
-    List<Shot> shots;
+    List<Collidable> collidables;
     GameComponent<SpaceScene> background;
     InvadersPool invadersPool;
 
@@ -31,9 +30,7 @@ public abstract class SpaceScene extends GameScene {
     }
 
     private void init() {
-        setInvaderList(new ArrayList<Ship>());
-        setShipList(new ArrayList<Ship>());
-        setShots(new ArrayList<Shot>());
+        setCollidables(new ArrayList<Collidable>());
     }
 
     @Override
@@ -45,25 +42,14 @@ public abstract class SpaceScene extends GameScene {
         addPlayers();
     }
 
-    public List<Ship> getShipList() {
-        return shipList;
+    public List<Collidable> iterCollidables(){
+        return new ArrayList<Collidable>(collidables);
     }
 
-    public void setShipList(List<Ship> shipList) {
-        this.shipList = shipList;
+    public List<Collidable> getCollidables(){
+        return this.collidables;
     }
 
-    public List<Ship> getInvaderList() {
-        return invaderList;
-    }
-
-    public List<Ship> invaderList(){
-        return new ArrayList<Ship>(getInvaderList());
-    }
-
-    public void setInvaderList(List<Ship> invaderList) {
-        this.invaderList = invaderList;
-    }
 
     public void addBackground() {
         Resource resource = getGame().getResource("background");
@@ -80,8 +66,8 @@ public abstract class SpaceScene extends GameScene {
     }
 
     public void addInvader(Invader invader) {
-        this.getInvaderList().add(invader);
-        this.addComponent(invader);
+        getCollidables().add(invader);
+        addComponent(invader);
     }
 
     public InvadersPool getInvadersPool() {
@@ -97,39 +83,36 @@ public abstract class SpaceScene extends GameScene {
     public abstract void addPlayers();
 
     public void addPlayer(PlayerShip player) {
-        getShipList().add(player);
+        getCollidables().add(player);
         addComponent(player);
     }
 
     public void shot(PlayerShip ship) {
         Resource resource = getGame().getResource("shot");
-        int y = (int) (ship.getY() - 1 - resource.getHeight());
+        int y = (int) (ship.getY() - 10 - resource.getHeight());
         int x = (int) (ship.getX() + (ship.getWidth() / 2) - (resource.getWidth() / 2));
         addShot(new Shot(resource, x, y, 0, -1, 100));
     }
 
     public void addShot(Shot shot) {
-        getShots().add(shot);
+        getCollidables().add(shot);
         addComponent(shot);
     }
 
-    public List<Shot> getShots() {
-        return shots;
-    }
-
-    public void setShots(List<Shot> shots) {
-        this.shots = shots;
-    }
-
     public void verifyCollision(Shot shot) {
-        for (Ship ship : invaderList()) {
-            if (CollisionDetector.INSTANCE.collidesRectAgainstRect(shot.getRect(), ship.getRect())) {
-                shot.collide(ship);
+        for (Collidable collidable: iterCollidables()) {
+
+            if (collidable != shot && CollisionDetector.INSTANCE.collidesRectAgainstRect(shot.getRect(), collidable.asComponent().getRect())) {
+                shot.collide(collidable);
             }
         }
     }
 
     public void removeComponent(GameComponent<?> component) {
         super.removeComponent(component);
+    }
+
+    public void setCollidables(ArrayList<Collidable> collidables) {
+        this.collidables = collidables;
     }
 }
