@@ -54,6 +54,12 @@ public abstract class Ship extends BasicMovingSpaceComponent implements Collidab
     }
 
     @Override
+    public void destroy(){
+        getScene().getCollidables().remove(this);
+        super.destroy();
+    }
+
+    @Override
     public GameComponent<SpaceScene> asComponent() {
         return this;
     }

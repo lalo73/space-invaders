@@ -5,8 +5,13 @@ import components.Ship;
 import components.shotting.Shot;
 import resources.Resource;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
+import utils.Time;
+
+import java.util.Timer;
 
 public class Invader extends Ship {
+
+    private long lastShotTime;
 
     private InvaderMover invaderMover;
 
@@ -23,9 +28,16 @@ public class Invader extends Ship {
     }
 
     @Override
+    public void init(){
+        super.init();
+        setLastShotTime(System.nanoTime());
+    }
+
+    @Override
     public void update(DeltaState deltaState){
         getInvaderMover().update(deltaState);
         super.update(deltaState);
+        tryShot(deltaState);
     }
 
     protected InvaderMover getInvaderMover(){
@@ -35,13 +47,29 @@ public class Invader extends Ship {
         return invaderMover;
     }
 
-    public void destroy(){
-        getScene().getCollidables().remove(this);
-        super.destroy();
+    @Override
+    public boolean canShot(DeltaState deltaState){
+        long now = System.nanoTime();
+        if(Time.havePassed(5, getLastShotTime(), now)){
+            setLastShotTime(now);
+            return true;
+        }
+        return false;
     }
 
     @Override
     public Shot createShot() {
-        throw new NotImplementedException();
+        Resource resource = getGame().getResource("invaderShot");
+        int y = (int) (getY() + 10 + resource.getHeight());
+        int x = (int) (getX() + (getWidth() / 2) - (resource.getWidth() / 2));
+        return new Shot(resource, x, y, 0, 1, 100);
+    }
+
+    public long getLastShotTime() {
+        return lastShotTime;
+    }
+
+    public void setLastShotTime(long lastShotTime) {
+        this.lastShotTime = lastShotTime;
     }
 }
