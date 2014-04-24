@@ -14,4 +14,8 @@ public class Time {
         long nanoSeconds = TimeUnit.NANOSECONDS.convert(seconds, TimeUnit.SECONDS);
         return passedTime > nanoSeconds;
     }
+
+    public static long plusSeconds(long time, int seconds){
+        return time + TimeUnit.NANOSECONDS.convert(seconds, TimeUnit.SECONDS);
+    }
 }

@@ -4,10 +4,9 @@ import com.uqbar.vainilla.DeltaState;
 import components.Ship;
 import components.shotting.Shot;
 import resources.Resource;
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 import utils.Time;
 
-import java.util.Timer;
+import java.util.Random;
 
 public class Invader extends Ship {
 
@@ -28,33 +27,37 @@ public class Invader extends Ship {
     }
 
     @Override
-    public void init(){
+    public void init() {
         super.init();
         setLastShotTime(System.nanoTime());
     }
 
     @Override
-    public void update(DeltaState deltaState){
+    public void update(DeltaState deltaState) {
         getInvaderMover().update(deltaState);
         super.update(deltaState);
         tryShot(deltaState);
     }
 
-    protected InvaderMover getInvaderMover(){
-        if(this.invaderMover == null){
+    protected InvaderMover getInvaderMover() {
+        if (this.invaderMover == null) {
             this.invaderMover = new StandardMove(this);
         }
         return invaderMover;
     }
 
     @Override
-    public boolean canShot(DeltaState deltaState){
+    public boolean canShot(DeltaState deltaState) {
         long now = System.nanoTime();
-        if(Time.havePassed(5, getLastShotTime(), now)){
-            setLastShotTime(now);
+        if (Time.havePassed(5, getLastShotTime(), now)) {
+            setLastShotTime(Time.plusSeconds(now, randomSeconds()));
             return true;
         }
         return false;
+    }
+
+    public int randomSeconds() {
+        return (new Random().nextInt(4)) + 1;
     }
 
     @Override
