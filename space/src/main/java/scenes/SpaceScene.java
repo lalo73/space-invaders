@@ -85,7 +85,7 @@ public abstract class SpaceScene extends GameScene {
     }
 
     public void shot(PlayerShip ship) {
-        Resource resource = getGame().getResource("shot");
+        Resource resource = getGame().getResource("playerShot");
         int y = (int) (ship.getY() - 10 - resource.getHeight());
         int x = (int) (ship.getX() + (ship.getWidth() / 2) - (resource.getWidth() / 2));
         Shot shot = new Shot(resource, x, y, 0, -1, 100);

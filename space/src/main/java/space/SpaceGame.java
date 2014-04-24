@@ -81,6 +81,6 @@ public class SpaceGame extends Game {
     }
 
     public void loadShots() {
-        addResource("shot", getConfig("shotImage"));
+        addResource("playerShot", getConfig("playersShotImage"));
     }
 }
