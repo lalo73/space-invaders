@@ -6,6 +6,9 @@ import com.uqbar.vainilla.appearances.Appearance;
 import com.uqbar.vainilla.events.constants.Key;
 import components.Collidable;
 import components.Ship;
+import components.shotting.Shot;
+import resources.Resource;
+import space.SpaceGame;
 
 public class PlayerShip extends Ship {
 
@@ -31,6 +34,14 @@ public class PlayerShip extends Ship {
     @Override
     public boolean canShot(DeltaState deltaState) {
         return deltaState.isKeyReleased(Key.SPACE);
+    }
+
+    @Override
+    public Shot createShot() {
+        Resource resource = getGame().getResource("playerShot");
+        int y = (int) (getY() - 10 - resource.getHeight());
+        int x = (int) (getX() + (getWidth() / 2) - (resource.getWidth() / 2));
+        return new Shot(resource, x, y, 0, -1, 100);
     }
 
     public void updateX(DeltaState deltaState) {

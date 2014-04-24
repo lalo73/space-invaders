@@ -1,6 +1,7 @@
 package components;
 
 
+import components.invaders.Invader;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -11,7 +12,7 @@ public class ShipTest {
 
     @Before
     public void setUp(){
-        this.ship = new Ship();
+        this.ship = new Invader();
     }
 
     @Test

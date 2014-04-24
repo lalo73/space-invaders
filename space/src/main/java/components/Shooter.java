@@ -2,6 +2,7 @@ package components;
 
 
 import com.uqbar.vainilla.DeltaState;
+import components.shotting.Shot;
 
 public interface Shooter {
 
@@ -10,4 +11,6 @@ public interface Shooter {
     public void shot();
 
     public void tryShot(DeltaState deltaState);
+
+    public Shot createShot();
 }

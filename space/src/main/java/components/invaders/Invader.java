@@ -2,7 +2,9 @@ package components.invaders;
 
 import com.uqbar.vainilla.DeltaState;
 import components.Ship;
+import components.shotting.Shot;
 import resources.Resource;
+import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 public class Invader extends Ship {
 
@@ -14,6 +16,10 @@ public class Invader extends Ship {
 
     public Invader(int x, int y, int xV, int yV, int speed) {
         super(x, y, xV, yV, speed);
+    }
+
+    public Invader() {
+        super();
     }
 
     @Override
@@ -32,5 +38,10 @@ public class Invader extends Ship {
     public void destroy(){
         getScene().getCollidables().remove(this);
         super.destroy();
+    }
+
+    @Override
+    public Shot createShot() {
+        throw new NotImplementedException();
     }
 }

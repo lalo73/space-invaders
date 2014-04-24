@@ -4,6 +4,7 @@ package components;
 import com.uqbar.vainilla.MovingGameComponent;
 import com.uqbar.vainilla.appearances.Appearance;
 import scenes.SpaceScene;
+import space.SpaceGame;
 
 public class BasicMovingSpaceComponent extends MovingGameComponent<SpaceScene> {
     public BasicMovingSpaceComponent(Appearance appearance, double x, double y, double xV, double yV, double speed){
@@ -23,5 +24,11 @@ public class BasicMovingSpaceComponent extends MovingGameComponent<SpaceScene> {
     private void setInitZ(){
         setZ(2);
     }
+
+    @Override
+    public SpaceGame getGame(){
+        return (SpaceGame) super.getGame();
+    }
+
 
 }

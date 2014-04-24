@@ -6,7 +6,7 @@ import com.uqbar.vainilla.GameComponent;
 import com.uqbar.vainilla.appearances.Appearance;
 import scenes.SpaceScene;
 
-public class Ship extends BasicMovingSpaceComponent implements Collidable, Shooter {
+public abstract class Ship extends BasicMovingSpaceComponent implements Collidable, Shooter {
     private int lifePoints;
     private int shotPower;
     private CollisionGroup collisionGroup;
