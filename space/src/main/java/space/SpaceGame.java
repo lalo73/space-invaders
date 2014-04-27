@@ -67,6 +67,7 @@ public class SpaceGame extends Game {
     public void loadBackgrounds() {
         addResource("background", getConfig("backgroundFile"));
         addResource("gameOverBackground", getConfig("gameOverBackground"));
+        addResource("pressStart", getConfig("pressStartBackground"));
     }
 
     public void loadInvaderImages() {

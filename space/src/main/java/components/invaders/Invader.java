@@ -68,6 +68,12 @@ public class Invader extends Ship {
         return new Shot(resource, x, y, 0, 1, 100);
     }
 
+    @Override
+    public void destroy(){
+        super.destroy();
+        getScene().getInvaderShips().remove(this);
+    }
+
     public long getLastShotTime() {
         return lastShotTime;
     }

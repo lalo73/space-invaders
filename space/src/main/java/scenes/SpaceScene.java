@@ -13,7 +13,6 @@ import components.shotting.Shot;
 import pool.InvadersPool;
 import resources.Resource;
 import scenes.statics.GameOver;
-import scenes.statics.StaticScene;
 import space.SpaceGame;
 
 import java.awt.*;
@@ -26,6 +25,7 @@ public abstract class SpaceScene extends GameScene {
     GameComponent<SpaceScene> background;
     InvadersPool invadersPool;
     List<PlayerShip> playerShips;
+    List<Invader> invaderShips;
 
     public SpaceScene() {
         super();
@@ -34,6 +34,7 @@ public abstract class SpaceScene extends GameScene {
 
     public void init() {
         setPlayerShips(new ArrayList<PlayerShip>());
+        setInvaderShips(new ArrayList<Invader>());
         setCollidables(new ArrayList<Collidable>());
     }
 
@@ -51,11 +52,11 @@ public abstract class SpaceScene extends GameScene {
         addComponent(new NyanCatManager());
     }
 
-    public List<Collidable> iterCollidables(){
+    public List<Collidable> iterCollidables() {
         return new ArrayList<Collidable>(collidables);
     }
 
-    public List<Collidable> getCollidables(){
+    public List<Collidable> getCollidables() {
         return this.collidables;
     }
 
@@ -75,6 +76,7 @@ public abstract class SpaceScene extends GameScene {
     }
 
     public void addInvader(Invader invader) {
+        getInvaderShips().add(invader);
         getCollidables().add(invader);
         addComponent(invader);
     }
@@ -103,7 +105,7 @@ public abstract class SpaceScene extends GameScene {
     }
 
     public void verifyCollision(Shot shot) {
-        for (Collidable collidable: iterCollidables()) {
+        for (Collidable collidable : iterCollidables()) {
 
             if (shot.canCollision(collidable) && CollisionDetector.INSTANCE.collidesRectAgainstRect(shot.getRect(), collidable.asComponent().getRect())) {
                 shot.collide(collidable);
@@ -127,10 +129,14 @@ public abstract class SpaceScene extends GameScene {
 
     public void takeStep(Graphics2D graphics) {
         super.takeStep(graphics);
-        if(getPlayerShips().isEmpty())
+        if (getPlayerShips().isEmpty())
             getGame().setCurrentScene(new GameOver());
+        if (getInvaderShips().isEmpty())
+            getGame().setCurrentScene(getNextScene());
 
     }
+
+    public abstract GameScene getNextScene();
 
     public List<PlayerShip> getPlayerShips() {
         return playerShips;
@@ -138,6 +144,14 @@ public abstract class SpaceScene extends GameScene {
 
     public void setPlayerShips(List<PlayerShip> playerShips) {
         this.playerShips = playerShips;
+    }
+
+    public List<Invader> getInvaderShips() {
+        return invaderShips;
+    }
+
+    public void setInvaderShips(List<Invader> invaderShips) {
+        this.invaderShips = invaderShips;
     }
 
 }

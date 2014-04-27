@@ -2,11 +2,13 @@ package scenes.levels;
 
 
 import collisionGroups.CollisionGroup;
+import com.uqbar.vainilla.GameScene;
 import components.factories.InvaderFactory;
 import components.invaders.Invader;
 import components.player.PlayerShip;
 import resources.Resource;
 import scenes.SpaceScene;
+import scenes.statics.PressStartScene;
 
 
 public class Level1 extends SpaceScene {
@@ -48,6 +50,11 @@ public class Level1 extends SpaceScene {
         PlayerShip playerShip = new PlayerShip(resource, getGame().getDisplayWidth() / 2, (int) (getGame().getDisplayHeight() - 20 - resource.getHeight()), 1, 0, 70);
         playerShip.setCollisionGroup(getPlayersGroup());
         addPlayer(playerShip);
+    }
+
+    @Override
+    public GameScene getNextScene() {
+        return new PressStartScene();
     }
 
     public CollisionGroup getPlayersGroup() {
