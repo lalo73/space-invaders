@@ -12,6 +12,7 @@ import components.player.PlayerShip;
 import components.shotting.Shot;
 import pool.InvadersPool;
 import resources.Resource;
+import scenes.statics.StaticScene;
 import space.SpaceGame;
 
 import java.awt.*;
@@ -23,6 +24,7 @@ public abstract class SpaceScene extends GameScene {
     List<Collidable> collidables;
     GameComponent<SpaceScene> background;
     InvadersPool invadersPool;
+    List<PlayerShip> playerShips;
 
     public SpaceScene() {
         super();
@@ -30,6 +32,7 @@ public abstract class SpaceScene extends GameScene {
     }
 
     public void init() {
+        setPlayerShips(new ArrayList<PlayerShip>());
         setCollidables(new ArrayList<Collidable>());
     }
 
@@ -89,6 +92,7 @@ public abstract class SpaceScene extends GameScene {
 
     public void addPlayer(PlayerShip player) {
         getCollidables().add(player);
+        getPlayerShips().add(player);
         addComponent(player);
     }
 
@@ -122,5 +126,17 @@ public abstract class SpaceScene extends GameScene {
 
     public void takeStep(Graphics2D graphics) {
         super.takeStep(graphics);
+        if(getPlayerShips().isEmpty())
+            getGame().setCurrentScene(new StaticScene());
+
     }
+
+    public List<PlayerShip> getPlayerShips() {
+        return playerShips;
+    }
+
+    public void setPlayerShips(List<PlayerShip> playerShips) {
+        this.playerShips = playerShips;
+    }
+
 }

@@ -57,5 +57,11 @@ public class PlayerShip extends Ship {
 
     }
 
+    @Override
+    public void destroy(){
+        super.destroy();
+        getScene().getPlayerShips().remove(this);
+    }
+
 
 }
