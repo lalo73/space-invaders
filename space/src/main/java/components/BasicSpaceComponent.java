@@ -15,6 +15,10 @@ public class BasicSpaceComponent extends GameComponent<SpaceScene> {
         super();
     }
 
+    public BasicSpaceComponent(int x, int y) {
+        super(x, y);
+    }
+
     @Override
     public SpaceGame getGame(){
         return (SpaceGame) super.getGame();
