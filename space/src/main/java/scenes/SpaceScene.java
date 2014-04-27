@@ -12,6 +12,7 @@ import components.player.PlayerShip;
 import components.shotting.Shot;
 import pool.InvadersPool;
 import resources.Resource;
+import scenes.statics.GameOver;
 import scenes.statics.StaticScene;
 import space.SpaceGame;
 
@@ -127,7 +128,7 @@ public abstract class SpaceScene extends GameScene {
     public void takeStep(Graphics2D graphics) {
         super.takeStep(graphics);
         if(getPlayerShips().isEmpty())
-            getGame().setCurrentScene(new StaticScene());
+            getGame().setCurrentScene(new GameOver());
 
     }
 
