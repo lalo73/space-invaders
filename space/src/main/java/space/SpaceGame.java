@@ -20,7 +20,7 @@ public class SpaceGame extends Game {
     protected void initializeResources() {
         this.applicationConfig = new Config("application.xml");
         this.resources = new HashMap<String, Resource>();
-        loadBackground();
+        loadBackgrounds();
         loadInvaderImages();
         loadPlayerImages();
         loadShots();
@@ -64,8 +64,9 @@ public class SpaceGame extends Game {
         resources.put(key, Resource.fromImage(image));
     }
 
-    public void loadBackground() {
+    public void loadBackgrounds() {
         addResource("background", getConfig("backgroundFile"));
+        addResource("gameOverBackground", getConfig("gameOverBackground"));
     }
 
     public void loadInvaderImages() {

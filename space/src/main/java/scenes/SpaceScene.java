@@ -119,4 +119,8 @@ public abstract class SpaceScene extends GameScene {
         shot.setCollisionGroup(ship.getCollisionGroup());
         addShot(shot);
     }
+
+    public void takeStep(Graphics2D graphics) {
+        super.takeStep(graphics);
+    }
 }
