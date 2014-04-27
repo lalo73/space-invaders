@@ -1,19 +1,18 @@
 package scenes.statics;
 
 import com.uqbar.vainilla.GameScene;
+import components.BasicSpaceComponent;
 import space.SpaceGame;
 
 
 public abstract class StaticScene extends GameScene {
 
-    public void setBackground(){
-
-    }
+    public abstract  BasicSpaceComponent getBackground();
 
     @Override
     public void onSetAsCurrent(){
         super.onSetAsCurrent();
-        setBackground();
+        addComponent(getBackground());
     }
 
     @Override

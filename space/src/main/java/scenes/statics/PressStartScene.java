@@ -5,8 +5,7 @@ import components.BasicSpaceComponent;
 public class PressStartScene extends StaticScene{
 
     @Override
-    public void setBackground(){
-        BasicSpaceComponent component = new BasicSpaceComponent(getGame().getResource("pressStart"), 0, 0);
-        addComponent(component);
+    public BasicSpaceComponent getBackground(){
+        return new BasicSpaceComponent(getGame().getResource("pressStart"), 0, 0);
     }
 }
