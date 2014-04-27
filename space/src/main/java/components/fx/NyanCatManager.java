@@ -20,7 +20,7 @@ public class NyanCatManager extends FXManager {
 
     public void initNyanCat() {
         SpaceGame game = getGame();
-        Resource resource = game.getResource("nyanCat");
+        Resource resource = game.getResource("helicop");
         double x = 0 - resource.getWidth();
         double y = game.getDisplayHeight() / 2;
         if (getNyanCat() == null)

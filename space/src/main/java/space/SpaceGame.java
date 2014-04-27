@@ -92,5 +92,6 @@ public class SpaceGame extends Game {
 
     public void loadFX() {
         addResource("nyanCat", getConfig("nyanCat"));
+        addResource("helicop", getConfig("helicop"));
     }
 }
