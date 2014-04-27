@@ -11,5 +11,6 @@
     <entry key="invadersShotImage">shots/shot-red-down.png</entry>
     <entry key="playerShip1">players/ship1.png</entry>
     <entry key="playerShip2">players/ship2.png</entry>
+    <entry key="playerShip3">players/escudo-min.png</entry>
     <entry key="nyanCat">fx/nyanCat.png</entry>
 </properties>
