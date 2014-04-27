@@ -33,12 +33,12 @@ public class Level1 extends SpaceScene {
         int initY = 20;
         int height = 0;
         for (String color : colors) {
-            for (Invader invader : InvaderFactory.invadersRow(17, getGame(), 20, initY, 5, 30, color)) {
+            for (Invader invader : InvaderFactory.invadersRow(14, getGame(), 20, initY, 15, 40, color)) {
                 invader.setCollisionGroup(getInvadersGroup());
                 addInvader(invader);
                 height = (int) invader.getHeight();
             }
-            initY += height;
+            initY += height + 10;
         }
 
 
