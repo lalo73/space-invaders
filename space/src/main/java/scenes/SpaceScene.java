@@ -20,9 +20,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public abstract class SpaceScene extends GameScene {
+public abstract class SpaceScene extends BasicSpaceScene {
     List<Collidable> collidables;
-    GameComponent<SpaceScene> background;
+    GameComponent<BasicSpaceScene> background;
     InvadersPool invadersPool;
     List<PlayerShip> playerShips;
     List<Invader> invaderShips;
@@ -71,7 +71,7 @@ public abstract class SpaceScene extends GameScene {
         return (SpaceGame) super.getGame();
     }
 
-    public GameComponent<SpaceScene> getBackground() {
+    public GameComponent<BasicSpaceScene> getBackground() {
         return this.background;
     }
 
