@@ -12,7 +12,7 @@ public class PressStartScene extends StaticScene {
 
     @Override
     public BasicSpaceComponent getBackground() {
-        return new BasicSpaceComponent(getGame().getResource("pressStart"), 0, 0);
+        return new BasicSpaceComponent(getGame().getResource("pressStart"), 52, 0);
     }
 
     @Override
