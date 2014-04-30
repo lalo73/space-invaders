@@ -5,6 +5,7 @@ import collisionGroups.CollisionGroup;
 import com.uqbar.vainilla.GameScene;
 import components.factories.InvaderFactory;
 import components.invaders.Invader;
+import components.invaders.MovingInvader;
 import components.player.PlayerShip;
 import resources.Resource;
 import scenes.SpaceScene;
@@ -30,7 +31,7 @@ public class Level1 extends SpaceScene {
     @Override
     public void addInvaders() {
         String[] colors = {"blue", "green", "violet", "orange", "yellow"};
-        int initY = 20;
+        int initY = 50;
         int height = 0;
         for (String color : colors) {
             for (Invader invader : InvaderFactory.invadersRow(14, getGame(), 20, initY, 15, 40, color)) {
@@ -40,6 +41,11 @@ public class Level1 extends SpaceScene {
             }
             initY += height + 10;
         }
+        Resource resource = getGame().getResource("invader-yellow");
+        MovingInvader movingInvader = new MovingInvader(resource, 0 - resource.getWidth(), 10, 1, 0, 0);
+        movingInvader.setCollisionGroup(getInvadersGroup());
+
+        addInvader(movingInvader);
 
 
     }
