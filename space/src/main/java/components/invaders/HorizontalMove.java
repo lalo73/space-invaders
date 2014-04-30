@@ -1,10 +1,7 @@
 package components.invaders;
 
 import com.uqbar.vainilla.DeltaState;
-import org.omg.CORBA.TIMEOUT;
 import utils.Time;
-
-import java.util.concurrent.TimeUnit;
 
 
 public class HorizontalMove extends InvaderMover {
@@ -20,19 +17,16 @@ public class HorizontalMove extends InvaderMover {
     public void update(DeltaState deltaState) {
         if (getInvader().getX() > getInvader().getGame().getDisplayWidth()) {
             getInvader().setX(0 - getInvader().getWidth());
-            stopped = true;
+            setStopped(true);
             getInvader().setSpeed(0);
             setLastTimeShowed(System.nanoTime());
         }
 
-        if (stopped && Time.havePassed(30, getLastTimeShowed())) {
-            stopped = false;
-            int defaultSpeed = 100;
+        if (isStopped() && Time.havePassed(30, getLastTimeShowed())) {
+            setStopped(false);
+            int defaultSpeed = 150;
             getInvader().setSpeed(defaultSpeed);
         }
-        System.out.println(String.format("(%s, %s)", getInvader().getX(), getInvader().getY()));
-
-
     }
 
     public long getLastTimeShowed() {
@@ -41,5 +35,13 @@ public class HorizontalMove extends InvaderMover {
 
     public void setLastTimeShowed(long lastTimeShowed) {
         this.lastTimeShowed = lastTimeShowed;
+    }
+
+    public boolean isStopped() {
+        return stopped;
+    }
+
+    public void setStopped(boolean stopped) {
+        this.stopped = stopped;
     }
 }

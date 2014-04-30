@@ -11,6 +11,7 @@ import java.util.Random;
 public class Invader extends Ship {
 
     private long lastShotTime;
+    private int shotDelay = 5;
 
     protected InvaderMover invaderMover;
 
@@ -49,7 +50,7 @@ public class Invader extends Ship {
     @Override
     public boolean canShot(DeltaState deltaState) {
         long now = System.nanoTime();
-        if (Time.havePassed(5, getLastShotTime(), now)) {
+        if (Time.havePassed(getShotDelay(), getLastShotTime(), now)) {
             setLastShotTime(Time.plusSeconds(now, randomSeconds()));
             return true;
         }
@@ -80,5 +81,13 @@ public class Invader extends Ship {
 
     public void setLastShotTime(long lastShotTime) {
         this.lastShotTime = lastShotTime;
+    }
+
+    public int getShotDelay() {
+        return shotDelay;
+    }
+
+    public void setShotDelay(int shotDelay) {
+        this.shotDelay = shotDelay;
     }
 }
