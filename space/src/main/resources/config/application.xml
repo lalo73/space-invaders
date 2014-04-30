@@ -4,7 +4,7 @@
     <entry key="screenWidth">800</entry>
     <entry key="screenHeight">600</entry>
     <entry key="gameTitle">Space invaders</entry>
-    <entry key="gameOverBackground">GameOver.png</entry>
+    <entry key="gameOverBackground">huida.png</entry>
     <entry key="pressStartBackground">mauri2.png</entry>
     <entry key="backgroundFile">mapa.png</entry>
     <entry key="playersShotImage">shots/shot-green-up.png</entry>
