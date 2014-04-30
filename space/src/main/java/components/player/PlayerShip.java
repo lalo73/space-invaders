@@ -28,6 +28,7 @@ public class PlayerShip extends Ship {
     public void update(DeltaState deltaState) {
         updateX(deltaState);
         super.update(deltaState);
+        fixX();
         tryShot(deltaState);
     }
 
@@ -45,22 +46,43 @@ public class PlayerShip extends Ship {
     }
 
     public void updateX(DeltaState deltaState) {
-        setSpeed(0);
-        if (deltaState.isKeyBeingHold(Key.LEFT) && !deltaState.isKeyBeingHold(Key.RIGHT)) {
-            getUVector().setX(-1);
+        if (isMoving(deltaState)) {
+            if (isMovingToLeft(deltaState))
+                getUVector().setX(-1);
+            else
+                getUVector().setX(1);
             setSpeed(defaultSpeed);
+        } else {
+            setSpeed(0);
         }
-        if (deltaState.isKeyBeingHold(Key.RIGHT) && !deltaState.isKeyBeingHold(Key.LEFT)) {
-            getUVector().setX(1);
-            setSpeed(defaultSpeed);
-        }
+    }
 
+    public boolean isMoving(DeltaState deltaState) {
+        return isMovingToLeft(deltaState) ^ isMovingToRight(deltaState);
+    }
+
+    public boolean isMovingToRight(DeltaState deltaState) {
+        return deltaState.isKeyBeingHold(Key.RIGHT) && !deltaState.isKeyBeingHold(Key.LEFT);
+    }
+
+    public boolean isMovingToLeft(DeltaState deltaState) {
+        return deltaState.isKeyBeingHold(Key.LEFT) && !deltaState.isKeyBeingHold(Key.RIGHT);
     }
 
     @Override
-    public void destroy(){
+    public void destroy() {
         super.destroy();
         getScene().getPlayerShips().remove(this);
+    }
+
+    /**
+     * TODO: improve this
+     */
+    private void fixX() {
+        if (getX() < 0)
+            setX(0);
+        if (getX() + getWidth() > getGame().getDisplayWidth())
+            setX(getGame().getDisplayWidth() - getWidth());
     }
 
 
