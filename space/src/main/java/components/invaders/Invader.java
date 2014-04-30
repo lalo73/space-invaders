@@ -12,7 +12,7 @@ public class Invader extends Ship {
 
     private long lastShotTime;
 
-    private InvaderMover invaderMover;
+    protected InvaderMover invaderMover;
 
     public Invader(Resource resource, double x, double y, double xV, double yV, double speed) {
         super(resource, x, y, xV, yV, speed);
