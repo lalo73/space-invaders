@@ -77,6 +77,26 @@ public class SpaceGame extends Game {
         addResource("invader-violet", "invaders/invader3-small.png");
         addResource("invader-blue", "invaders/invader4-small.png");
         addResource("invader-green", "invaders/invader5-small.png");
+
+        addResource("yellow", "invaders/lifes-less/invader1-small.png");
+        addResource("yellow-1", "invaders/lifes-less/invader1-small-1.png");
+        addResource("yellow-2", "invaders/lifes-less/invader1-small-2.png");
+
+	    addResource("orange", "invaders/lifes-less/invader2-small.png");
+	    addResource("orange-1", "invaders/lifes-less/invader2-small-1.png");
+	    addResource("orange-2", "invaders/lifes-less/invader2-small-2.png");
+
+	    addResource("violet", "invaders/lifes-less/invader3-small.png");
+	    addResource("violet-1", "invaders/lifes-less/invader3-small-1.png");
+	    addResource("violet-2", "invaders/lifes-less/invader3-small-2.png");
+
+	    addResource("blue", "invaders/lifes-less/invader4-small.png");
+	    addResource("blue-1", "invaders/lifes-less/invader4-small-1.png");
+	    addResource("blue-2", "invaders/lifes-less/invader4-small-2.png");
+
+	    addResource("green", "invaders/lifes-less/invader5-small.png");
+	    addResource("green-1", "invaders/lifes-less/invader5-small-1.png");
+	    addResource("green-2", "invaders/lifes-less/invader5-small-2.png");
     }
 
     public void loadPlayerImages() {

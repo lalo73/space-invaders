@@ -38,7 +38,7 @@ public class InvaderFactory {
     public static Invader createByColor(SpaceGame spaceGame, String color) {
         Resource resource = spaceGame.getResource(String.format("invader-%s", color));
 
-        return new Invader(new LastLifeState(resource), 0, 0, 1, 0, 0);
+        return new Invader(InvaderStateFactory.getStateForColor(spaceGame, color), 0, 0, 1, 0, 0);
     }
 
     public static List<Invader> getInvaders(int number, SpaceGame game, String color) {
