@@ -72,6 +72,8 @@ public class SpaceGame extends Game {
     }
 
     public void loadInvaderImages() {
+	    addResource("moving-invader", "invaders/enemi.png");
+
         addResource("invader-yellow", "invaders/invader1-small.png");
         addResource("invader-orange", "invaders/invader2-small.png");
         addResource("invader-violet", "invaders/invader3-small.png");

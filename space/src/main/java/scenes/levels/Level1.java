@@ -42,7 +42,7 @@ public class Level1 extends SpaceScene {
             }
             initY += height;
         }
-        Resource resource = getGame().getResource("invader-yellow");
+        Resource resource = getGame().getResource("moving-invader");
         MovingInvader movingInvader = new MovingInvader(new LastLifeState(resource), (int) (0 - resource.getWidth()), 10, 1, 0, 0);
         movingInvader.setCollisionGroup(getInvadersGroup());
 
