@@ -7,6 +7,7 @@ import components.factories.InvaderFactory;
 import components.invaders.Invader;
 import components.invaders.MovingInvader;
 import components.player.PlayerShip;
+import components.states.LastLifeState;
 import resources.Resource;
 import scenes.SpaceScene;
 import scenes.statics.PressStartScene;
@@ -42,7 +43,7 @@ public class Level1 extends SpaceScene {
             initY += height;
         }
         Resource resource = getGame().getResource("invader-yellow");
-        MovingInvader movingInvader = new MovingInvader(resource, 0 - resource.getWidth(), 10, 1, 0, 0);
+        MovingInvader movingInvader = new MovingInvader(new LastLifeState(resource), (int) (0 - resource.getWidth()), 10, 1, 0, 0);
         movingInvader.setCollisionGroup(getInvadersGroup());
 
         addInvader(movingInvader);
@@ -53,7 +54,7 @@ public class Level1 extends SpaceScene {
     @Override
     public void addPlayers() {
         Resource resource = getGame().getResource("player-ship2");
-        PlayerShip playerShip = new PlayerShip(resource, getGame().getDisplayWidth() / 2, (int) (getGame().getDisplayHeight() - 20 - resource.getHeight()), 1, 0, 70);
+        PlayerShip playerShip = new PlayerShip(new LastLifeState(resource), getGame().getDisplayWidth() / 2, (int) (getGame().getDisplayHeight() - 20 - resource.getHeight()), 1, 0, 70);
         playerShip.setCollisionGroup(getPlayersGroup());
         addPlayer(playerShip);
     }

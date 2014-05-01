@@ -7,6 +7,7 @@ import com.uqbar.vainilla.events.constants.Key;
 import components.Collidable;
 import components.Ship;
 import components.shotting.Shot;
+import components.states.ShipState;
 import resources.Resource;
 import space.SpaceGame;
 
@@ -19,8 +20,8 @@ public class PlayerShip extends Ship {
         defaultSpeed = speed;
     }
 
-    public PlayerShip(Appearance appearance, int x, int y, int xV, int yV, int speed) {
-        super(appearance, x, y, xV, yV, speed);
+    public PlayerShip(ShipState shipState, int x, int y, int xV, int yV, int speed) {
+        super(shipState, x, y, xV, yV, speed);
         defaultSpeed = speed;
     }
 

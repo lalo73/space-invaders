@@ -4,92 +4,103 @@ import collisionGroups.CollisionGroup;
 import com.uqbar.vainilla.DeltaState;
 import com.uqbar.vainilla.GameComponent;
 import com.uqbar.vainilla.appearances.Appearance;
+import com.uqbar.vainilla.appearances.Invisible;
+import components.states.LastLifeState;
+import components.states.ShipState;
 import scenes.SpaceScene;
 
 public abstract class Ship extends BasicMovingSpaceComponent implements Collidable, Shooter {
-    private int lifePoints;
-    private int shotPower;
-    private CollisionGroup collisionGroup;
+	private int shotPower;
+	private CollisionGroup collisionGroup;
+	private ShipState shipState;
 
-    public Ship() {
-        super();
-        init();
-    }
+	public Ship() {
+		super();
+		init();
+	}
 
-    public Ship(Appearance appearance, double x, double y, double xV, double yV, double speed) {
-        super(appearance, x, y, xV, yV, speed);
-    }
+	public Ship(ShipState shipState, int x, int y, int xV, int yV, int speed) {
+		super(x, y, xV, yV, speed);
+		setShipState(shipState);
+	}
 
-    public Ship(int x, int y, int xV, int yV, int speed) {
-        super(x, y, xV, yV, speed);
-    }
+	public Ship(int x, int y, int xV, int yV, int speed) {
+		super(x, y, xV, yV, speed);
+		setShipState(new LastLifeState(new Invisible()));
+	}
 
-    public void init() {
-        this.setLifePoints(1);
-        this.setShotPower(1);
-    }
+	public void init() {
+		this.setShotPower(1);
+	}
 
-    public int getLifePoints() {
-        return lifePoints;
-    }
+	public int getShotPower() {
+		return shotPower;
+	}
 
-    public void setLifePoints(int lifePoints) {
-        this.lifePoints = lifePoints;
-    }
+	@Override
+	public Appearance getAppearance() {
+		return getShipState().getAppearance();
+	}
 
-    public int getShotPower() {
-        return shotPower;
-    }
+	public void setShotPower(int shotPower) {
+		this.shotPower = shotPower;
+	}
 
-    public void setShotPower(int shotPower) {
-        this.shotPower = shotPower;
-    }
+	@Override
+	public void collidedBy(Collidable collidable) {
+		getShipState().collidedBy(this, collidable);
+	}
 
-    @Override
-    public void collidedBy(Collidable collidable) {
-        setLifePoints(getLifePoints() - 1);
-        if (getLifePoints() <= 0) {
-            destroy();
-        }
-    }
+	@Override
+	public void destroy() {
+		getScene().getCollidables().remove(this);
+		super.destroy();
+	}
 
-    @Override
-    public void destroy(){
-        getScene().getCollidables().remove(this);
-        super.destroy();
-    }
+	@Override
+	public GameComponent<SpaceScene> asComponent() {
+		return this;
+	}
 
-    @Override
-    public GameComponent<SpaceScene> asComponent() {
-        return this;
-    }
+	@Override
+	public boolean canCollision(Collidable collidable) {
+		return getCollisionGroup() != collidable.getCollisionGroup();
+	}
 
-    @Override
-    public boolean canCollision(Collidable collidable) {
-        return getCollisionGroup() != collidable.getCollisionGroup();
-    }
+	@Override
+	public CollisionGroup getCollisionGroup() {
+		return this.collisionGroup;
+	}
 
-    @Override
-    public CollisionGroup getCollisionGroup() {
-        return this.collisionGroup;
-    }
+	public void setCollisionGroup(CollisionGroup collisionGroup) {
+		this.collisionGroup = collisionGroup;
+	}
 
-    public void setCollisionGroup(CollisionGroup collisionGroup) {
-        this.collisionGroup = collisionGroup;
-    }
+	@Override
+	public boolean canShot(DeltaState deltaState) {
+		return false;
+	}
 
-    @Override
-    public boolean canShot(DeltaState deltaState) {
-        return false;
-    }
+	@Override
+	public void shot() {
+		getScene().shot(this);
+	}
 
-    @Override
-    public void shot() {
-        getScene().shot(this);
-    }
-        @Override
-    public void tryShot(DeltaState deltaState) {
-        if (canShot(deltaState))
-            shot();
-    }
+	@Override
+	public void tryShot(DeltaState deltaState) {
+		if (canShot(deltaState))
+			shot();
+	}
+
+	public ShipState getShipState() {
+		return shipState;
+	}
+
+	public void setShipState(ShipState shipState) {
+		this.shipState = shipState;
+	}
+
+	public int getLifePoints(){
+		return getShipState().getLifePoints();
+	}
 }

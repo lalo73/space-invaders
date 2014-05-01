@@ -2,6 +2,7 @@ package components.factories;
 
 
 import components.invaders.Invader;
+import components.states.LastLifeState;
 import resources.Resource;
 import space.SpaceGame;
 
@@ -36,7 +37,8 @@ public class InvaderFactory {
 
     public static Invader createByColor(SpaceGame spaceGame, String color) {
         Resource resource = spaceGame.getResource(String.format("invader-%s", color));
-        return new Invader(resource, 0, 0, 1, 0, 0);
+
+        return new Invader(new LastLifeState(resource), 0, 0, 1, 0, 0);
     }
 
     public static List<Invader> getInvaders(int number, SpaceGame game, String color) {

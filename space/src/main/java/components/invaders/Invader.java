@@ -3,6 +3,7 @@ package components.invaders;
 import com.uqbar.vainilla.DeltaState;
 import components.Ship;
 import components.shotting.Shot;
+import components.states.ShipState;
 import resources.Resource;
 import utils.Time;
 
@@ -15,8 +16,8 @@ public class Invader extends Ship {
 
     protected InvaderMover invaderMover;
 
-    public Invader(Resource resource, double x, double y, double xV, double yV, double speed) {
-        super(resource, x, y, xV, yV, speed);
+    public Invader(ShipState shipState, int x, int y, int xV, int yV, int speed) {
+        super(shipState, x, y, xV, yV, speed);
     }
 
     public Invader(int x, int y, int xV, int yV, int speed) {

@@ -1,12 +1,13 @@
 package components.invaders;
 
 import com.uqbar.vainilla.DeltaState;
+import components.states.ShipState;
 import resources.Resource;
 
 public class MovingInvader extends Invader {
 
-    public MovingInvader(Resource resource, double x, int y, int xV, int yV, int speed) {
-        super(resource, x, y, xV, yV, speed);
+    public MovingInvader(ShipState shipState, int x, int y, int xV, int yV, int speed) {
+        super(shipState, x, y, xV, yV, speed);
         setShotDelay(1);
     }
 
