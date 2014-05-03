@@ -1,4 +1,4 @@
-package components.strategies;
+package components.shotting.strategies;
 
 
 import components.Ship;

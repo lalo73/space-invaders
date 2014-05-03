@@ -7,8 +7,8 @@ import com.uqbar.vainilla.appearances.Appearance;
 import com.uqbar.vainilla.appearances.Invisible;
 import components.states.LastLifeState;
 import components.states.ShipState;
-import components.strategies.ShotStrategy;
-import components.strategies.SimpleShot;
+import components.shotting.strategies.ShotStrategy;
+import components.shotting.strategies.SimpleShot;
 import scenes.SpaceScene;
 
 public abstract class Ship extends BasicMovingSpaceComponent implements Collidable, Shooter {
