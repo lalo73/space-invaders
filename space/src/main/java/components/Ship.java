@@ -7,12 +7,15 @@ import com.uqbar.vainilla.appearances.Appearance;
 import com.uqbar.vainilla.appearances.Invisible;
 import components.states.LastLifeState;
 import components.states.ShipState;
+import components.strategies.ShotStrategy;
+import components.strategies.SimpleShot;
 import scenes.SpaceScene;
 
 public abstract class Ship extends BasicMovingSpaceComponent implements Collidable, Shooter {
 	private int shotPower;
 	private CollisionGroup collisionGroup;
 	private ShipState shipState;
+	private ShotStrategy shotStrategy;
 
 	public Ship() {
 		super();
@@ -22,15 +25,18 @@ public abstract class Ship extends BasicMovingSpaceComponent implements Collidab
 	public Ship(ShipState shipState, int x, int y, int xV, int yV, int speed) {
 		super(x, y, xV, yV, speed);
 		setShipState(shipState);
+		init();
 	}
 
 	public Ship(int x, int y, int xV, int yV, int speed) {
 		super(x, y, xV, yV, speed);
 		setShipState(new LastLifeState(new Invisible()));
+		init();
 	}
 
 	public void init() {
-		this.setShotPower(1);
+		setShotPower(1);
+		setShotStrategy(new SimpleShot());
 	}
 
 	public int getShotPower() {
@@ -83,7 +89,7 @@ public abstract class Ship extends BasicMovingSpaceComponent implements Collidab
 
 	@Override
 	public void shot() {
-		getScene().shot(createShot());
+		getShotStrategy().shot(getScene(), this);
 	}
 
 	@Override
@@ -102,5 +108,13 @@ public abstract class Ship extends BasicMovingSpaceComponent implements Collidab
 
 	public int getLifePoints(){
 		return getShipState().getLifePoints();
+	}
+
+	public ShotStrategy getShotStrategy() {
+		return shotStrategy;
+	}
+
+	public void setShotStrategy(ShotStrategy shotStrategy) {
+		this.shotStrategy = shotStrategy;
 	}
 }
