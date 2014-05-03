@@ -121,9 +121,7 @@ public abstract class SpaceScene extends BasicSpaceScene {
         this.collidables = collidables;
     }
 
-    public void shot(Ship ship) {
-        Shot shot = ship.createShot();
-        shot.setCollisionGroup(ship.getCollisionGroup());
+    public void shot(Shot shot) {
         addShot(shot);
     }
 

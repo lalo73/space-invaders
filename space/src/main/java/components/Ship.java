@@ -83,7 +83,7 @@ public abstract class Ship extends BasicMovingSpaceComponent implements Collidab
 
 	@Override
 	public void shot() {
-		getScene().shot(this);
+		getScene().shot(createShot());
 	}
 
 	@Override

@@ -67,7 +67,9 @@ public class Invader extends Ship {
         Resource resource = getGame().getResource("invaderShot");
         int y = (int) (getY() + 10 + resource.getHeight());
         int x = (int) (getX() + (getWidth() / 2) - (resource.getWidth() / 2));
-        return new Shot(resource, x, y, 0, 1, 100);
+	    Shot shot = new Shot(resource, x, y, 0, 1, 100);
+	    shot.setCollisionGroup(getCollisionGroup());
+        return shot;
     }
 
     @Override
